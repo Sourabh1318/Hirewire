@@ -11,7 +11,7 @@ const SignUp = ({ setcurrentPage }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // 👈 loading state
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const { updateUser } = useContext(UserContext);
@@ -35,7 +35,7 @@ const SignUp = ({ setcurrentPage }) => {
     }
 
     setError("");
-    setLoading(true); // 👈 start loading
+    setLoading(true);
 
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
@@ -45,7 +45,14 @@ const SignUp = ({ setcurrentPage }) => {
       });
 
       console.log("Signup response:", response.data);
+
+      // ✅ Save token in localStorage
+      localStorage.setItem("token", response.data.token);
+
+      // ✅ Save user in context
       updateUser(response.data.data);
+
+      // ✅ Redirect
       navigate("/dashboard");
     } catch (err) {
       console.error("Signup error:", err);
@@ -55,13 +62,12 @@ const SignUp = ({ setcurrentPage }) => {
         setError("Network error. Check console.");
       }
     } finally {
-      setLoading(false); // 👈 stop loading
+      setLoading(false);
     }
   };
 
   return (
     <div className="relative">
-      {/* 🔁 Fullscreen Amber Loader */}
       {loading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
           <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
