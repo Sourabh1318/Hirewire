@@ -28,7 +28,7 @@ app.use(
       console.log("🔍 Incoming request origin:", origin);
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://hire-wire-three.vercel.app",
+        "https://hirewire-frontend.onrender.com",
       ];
 
       if (!origin || allowedOrigins.includes(origin)) {
