@@ -46,13 +46,10 @@ const SignUp = ({ setcurrentPage }) => {
 
       console.log("Signup response:", response.data);
 
-      // ✅ Save token in localStorage
-      localStorage.setItem("token", response.data.token);
-
-      // ✅ Save user in context
+      // ✅ Set user context (no token needed)
       updateUser(response.data.data);
 
-      // ✅ Redirect
+      // ✅ Redirect to dashboard
       navigate("/dashboard");
     } catch (err) {
       console.error("Signup error:", err);

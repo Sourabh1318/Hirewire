@@ -39,19 +39,14 @@ const Login = ({ setcurrentPage }) => {
 
       console.log("Login response:", response.data);
 
-      // ✅ Save token to localStorage
-      localStorage.setItem("token", response.data.token);
-
-      // ✅ Save user data to context
+      // ✅ Set user context (no token needed)
       updateUser(response.data.data);
 
       // ✅ Redirect to dashboard
       navigate("/dashboard");
     } catch (err) {
       console.error("Login error:", err);
-      setError(
-        err?.response?.data?.message || "Login failed. Please try again."
-      );
+      setError(err?.response?.data?.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
