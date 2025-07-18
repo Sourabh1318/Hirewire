@@ -38,15 +38,11 @@ const Login = ({ setcurrentPage }) => {
       });
 
       console.log("Login response:", response.data);
-
-      // ✅ Set user context (no token needed)
       updateUser(response.data.data);
-
-      // ✅ Redirect to dashboard
       navigate("/dashboard");
     } catch (err) {
       console.error("Login error:", err);
-      setError(err?.response?.data?.message || "Login failed. Please try again.");
+      setError("Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -62,7 +58,7 @@ const Login = ({ setcurrentPage }) => {
 
       <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
         <h3 className="text-2xl font-semibold text-black mb-4">Welcome Back</h3>
-        <p className="text-lg mb-6">Please enter your details to log in</p>
+        <p className="text-lg mb-6">Please Enter your details to log in</p>
 
         <form onSubmit={handleLogin}>
           <Input
