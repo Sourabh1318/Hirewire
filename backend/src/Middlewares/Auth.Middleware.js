@@ -3,9 +3,11 @@ import User from "../Models/user.model.js";
 
 const verifyToken = async (req, res, next) => {
   try {
-    // Extract token from "Authorization" header
-    const authHeader = req.headers.authorization;
-    const token = authHeader && authHeader.split(" ")[1];
+    // Extract token from cookies or Authorization header
+    const token =
+      req.cookies?.jwt || // Cookie-based (preferred for browser use)
+      (req.headers.authorization &&
+        req.headers.authorization.split(" ")[1]); // Header-based (fallback)
 
     if (!token) {
       return res
@@ -20,7 +22,7 @@ const verifyToken = async (req, res, next) => {
     }
 
     // Find user from decoded token
-    const user = await User.findById(verified.userId).select("-password");
+    const user = await User.findById(verified.id).select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -31,7 +33,9 @@ const verifyToken = async (req, res, next) => {
     next(); // continue to route
   } catch (error) {
     console.error("Token verification error:", error);
-    res.status(500).json({ message: "Internal Server Error", error: error.message });
+    res
+      .status(500)
+      .json({ message: "Internal Server Error", error: error.message });
   }
 };
 
