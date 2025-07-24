@@ -1,31 +1,31 @@
-export const BASE_URL = "https://hirewire-backend.onrender.com/api";
-
+export const BASE_URL = "https://hirewirebackend.onrender.com";   ///backend url
+//
 export const API_PATHS = {
   AUTH: {
-    REGISTER: "/auth/register",
-    LOGIN: "/auth/login",
-    GET_PROFILE: "/auth/profile",
+    REGISTER: "/api/auth/register",
+    LOGIN: "/api/auth/login",
+    GET_PROFILE: "/api/auth/profile",
   },
 
   IMAGE: {
-    UPLOAD_IMAGE: "/auth/upload-image",
+    UPLOAD_IMAGE: "/api/auth/upload-image",
   },
 
   AI: {
-    GENERATE_QUESTIONS: "/ai/generate-questions",
-    GENERATE_EXPLANATIONS: "/ai/generate-explanations",
+    GENERATE_QUESTIONS: "/api/ai/generate-questions",
+    GENERATE_EXPLANATIONS: "/api/ai/generate-explanations",
   },
 
   SESSION: {
-    CREATE: "/sessions/create-session",
-    GET_ONE: (id) => `/sessions/get-session/${id}`,
-    GET_ALL: "/sessions/get-all-sessions",
-    DELETE: (id) => `/sessions/delete-session/${id}`,
+    CREATE: "/api/sessions/create-session",
+    GET_ONE: (id) => `/api/sessions/get-session/${id}`,
+    GET_ALL: "/api/sessions/get-all-sessions",
+    DELETE: (id) => `/api/sessions/delete-session/${id}`,
   },
 
   QUESTION: {
-    ADD_TO_SESSION: "/questions/add",
-    PIN: (id) => `/questions/${id}/pin`,
-    UPDATE_NOTE: (id) => `/questions/${id}/note`,
+    ADD_TO_SESSION: "/api/questions/add",
+    PIN: (id) => `/api/questions/${id}/pin`,
+    UPDATE_NOTE: (id) => `/api/questions/${id}/note`,
   },
 };
