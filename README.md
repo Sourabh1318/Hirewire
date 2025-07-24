@@ -1,5 +1,5 @@
 # ⚡️ HireWire 🚀  
-> _Ace interviews like a beast. Built with MERN + Gemini. Powered by caffeine and chaos._
+> __Ace interviews like a beast. Built with MERN + Gemini. Powered by caffeine and chaos.__
 
 # Landing Page:
 ![image](https://github.com/user-attachments/assets/b6020f9d-12c1-4357-b48c-a17bd48b4c44)
