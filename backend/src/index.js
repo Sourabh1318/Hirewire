@@ -28,7 +28,7 @@ app.use(
       console.log("🔍 Incoming request origin:", origin);
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://hirewire-mh66.onrender.com",
+        "https://hirewire-frontend.onrender.com",
       ];
 
       if (!origin || allowedOrigins.includes(origin)) {
