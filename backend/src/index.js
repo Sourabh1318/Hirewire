@@ -24,13 +24,13 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 app.use(express.json());
 app.use(
   cors({
-    origin: (origin, callback) => {
-      console.log("🔍 Incoming request origin:", origin);
+    origin: function (origin, callback) {
       const allowedOrigins = [
-        "http://localhost:5173",
-        "https://hirewire-frontend.onrender.com",
+        "http://localhost:5173", // Dev
+        "https://hirewire-frontend.onrender.com", // Production
       ];
 
+      // Allow requests with no origin (like Postman or mobile apps)
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -38,9 +38,10 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true,
+    credentials: true, // Allow cookies
   })
 );
+
 
 app.use(cookieParser());
 

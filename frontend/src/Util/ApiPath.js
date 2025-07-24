@@ -1,4 +1,4 @@
-export const BASE_URL = "https://hirewire-mcb1.onrender.com";   ///backend url
+export const BASE_URL = "https://hirewire-backend-pbim.onrender.com";   ///backend url
 //
 export const API_PATHS = {
   AUTH: {
